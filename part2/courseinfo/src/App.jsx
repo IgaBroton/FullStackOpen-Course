@@ -1,8 +1,11 @@
+import { useState } from "react"
+
 const Course = ({course}) => {
   return (
     <div>
       <Header name={course.name} />
       <Content parts={course.parts} />
+      <Total exercises={course.parts.map(part => part.exercises)} />
     </div>
   )
 }
@@ -27,6 +30,16 @@ const Part = ({part}) => {
   )
 }
 
+const Total = ({exercises}) => {
+  let total = 0;
+  for(let i=0;i<exercises.length;i++) {
+    total += exercises[i]
+  }
+  return (
+    <p><b>total of {total} exercises</b></p>
+  )
+}
+
 const App = () => {
   const course = {
     id: 1,
@@ -46,6 +59,11 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3
+      },
+      {
+        name: 'Redux',
+        exercises: 11,
+        id: 4
       }
     ]
   }
