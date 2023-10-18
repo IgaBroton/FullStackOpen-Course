@@ -5,7 +5,7 @@ const Course = ({course}) => {
     <div>
       <Header name={course.name} />
       <Content parts={course.parts} />
-      <Total exercises={course.parts.map(part => part.exercises)} />
+      <Total parts={course.parts} />
     </div>
   )
 }
@@ -30,13 +30,11 @@ const Part = ({part}) => {
   )
 }
 
-const Total = ({exercises}) => {
-  let total = 0;
-  for(let i=0;i<exercises.length;i++) {
-    total += exercises[i]
-  }
+const Total = ({parts}) => {
+  const totalAmount = parts.reduce((sum, part) => sum + part.exercises, 0)
+  console.log(totalAmount)
   return (
-    <p><b>total of {total} exercises</b></p>
+    <p><b>total of {totalAmount} exercises</b></p>
   )
 }
 
