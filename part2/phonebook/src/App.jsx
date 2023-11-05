@@ -3,6 +3,7 @@ import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
+import personService from './services/persons'
 
 const App = () => {
 
@@ -29,7 +30,10 @@ const App = () => {
     }
 
     if(!persons.some(p => p.name === newName)) {
-      setPersons(persons.concat(person))
+
+      personService.create_person(person).then(returnedPerson =>
+        setPersons(persons.concat(returnedPerson))
+        )
       setNewName("")
       setNewNumber("")
     }
