@@ -12,4 +12,9 @@ const delete_person = (id) => {
     return request
 }
 
-export default { create_person, delete_person }
+const edit_person = (id, changedPerson) => {
+    const request = axios.put(baseUrl + '/' + id, changedPerson)
+    return request.then(response => response.data)
+}
+
+export default { create_person, delete_person, edit_person }

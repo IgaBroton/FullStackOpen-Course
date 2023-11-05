@@ -38,7 +38,18 @@ const App = () => {
       setNewNumber("")
     }
     else {
-      alert(newName + ' is already added to phonebook')
+      window.confirm(newName + ' is already added to phonebook, replace the old number with a new one?')
+      const person = persons.find(p => p.name === newName)
+      const changedPerson = { ...person, number: newNumber }
+
+      personService
+      .edit_person(person.id, changedPerson)
+      .then(returnedPerson => {
+        setPersons(persons.map(p => p.id !== person.id ? p : returnedPerson))
+        setNewName("")
+        setNewNumber("")
+      })
+
     }
   }
 
@@ -51,7 +62,6 @@ const App = () => {
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
-    console.log(newName)
   }
 
   const handleNumberChange = (event) => {
