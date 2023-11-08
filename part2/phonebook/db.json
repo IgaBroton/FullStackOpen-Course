@@ -21,9 +21,14 @@
       "id": 4
     },
     {
-      "name": "Maks Podg",
+      "name": "maks",
       "number": "123",
       "id": 5
+    },
+    {
+      "name": "kornelek",
+      "number": "54321",
+      "id": 6
     }
   ]
 }

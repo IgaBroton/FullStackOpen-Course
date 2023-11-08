@@ -12,6 +12,18 @@ const App = () => {
   const [filter, setFilter] = useState('')
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
+  const [message, setMessage] = useState(null)
+
+  const Notification = ({message}) => {
+    if(message === null) {
+      return null;
+    }
+    return (
+      <div className='error'>
+        {message}
+      </div>
+    )
+  }
 
   useEffect(() => {
     axios
@@ -36,6 +48,10 @@ const App = () => {
         )
       setNewName("")
       setNewNumber("")
+      setMessage("Added " + person.name)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
     }
     else {
       window.confirm(newName + ' is already added to phonebook, replace the old number with a new one?')
@@ -48,6 +64,10 @@ const App = () => {
         setPersons(persons.map(p => p.id !== person.id ? p : returnedPerson))
         setNewName("")
         setNewNumber("")
+        setMessage(person.name + "'s is changed")
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
       })
 
     }
@@ -75,6 +95,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={message} />
       <Filter handleNameFilter={handleNameFilter}/>
       <h3>Add a new</h3>
       <PersonForm addName={addName} newName={newName} handleNameChange={handleNameChange} newNumber={newNumber} handleNumberChange={handleNumberChange}/>
