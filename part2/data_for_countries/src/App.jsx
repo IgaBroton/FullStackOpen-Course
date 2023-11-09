@@ -20,6 +20,10 @@ const App = () => {
     setSearch(event.target.value)
   }
 
+  const handleShow = (event) => {
+    setSearch(event.target.value)
+  }
+
   return (
     <div>
       <Search handleSearch={handleSearch}/>
@@ -46,7 +50,7 @@ const App = () => {
           'Too many matches, specify another filter' 
         : 
         countries.filter(country => country.name.common.toUpperCase().includes(search.toUpperCase()))
-        .map(country => <div key={country.name.common}> {country.name.common} </div>)
+        .map(country => <div key={country.name.common}> {country.name.common} <button onClick={handleShow}>show</button></div>)
       )
     }
     </div>
