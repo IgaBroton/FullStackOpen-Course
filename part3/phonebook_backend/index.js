@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 const port = 3001;
@@ -26,6 +27,7 @@ let persons = [
   },
 ];
 
+app.use(morgan('tiny'));
 app.use(express.json());
 
 app.get('/info', (request, response) =>
