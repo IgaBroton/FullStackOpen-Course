@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
@@ -15,6 +14,7 @@ const App = () => {
   const [message, setMessage] = useState(null)
   const [error, setError] = useState(false)
 
+  // eslint-disable-next-line react/prop-types
   const Notification = ({message, error}) => {
     if(message === null) {
       return null;
@@ -27,7 +27,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    personServices
+    personService
       .getAll()
       .then(initialResult => {
         setPersons(initialResult)
