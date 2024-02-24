@@ -65,9 +65,9 @@ app.post('/api/persons', postMorgan, (request, response) => {
           number: body.number,
       })
 
-      /*person.save().then(person => {
+      person.save().then(person => {
           response.json(person)
-      }) */
+      })
   }  
 })
 
