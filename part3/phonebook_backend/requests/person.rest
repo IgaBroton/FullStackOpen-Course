@@ -7,13 +7,14 @@ GET {{baseUrl}}
 POST {{baseUrl}} Content-Type: application/json
 
 {
-"name": "Maksik", "number": "000000"
+"name": "Maksik",
+"number": "000000"
 }
 
 ###
 
-GET {{baseUrl}}/1
+GET {{baseUrl}}/65da3552b557c78600e05154
 
 ###
 
-DELETE {{baseUrl}}/1
+DELETE {{baseUrl}}/65da34be1340c5c38c2b746e

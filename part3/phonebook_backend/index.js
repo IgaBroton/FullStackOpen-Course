@@ -40,10 +40,10 @@ app.get('/api/persons/:id', (request, response) => {
 })
 
 app.delete('/api/persons/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const person = Person.filter(persons => persons.id === id)
-
-  response.status(204).end()
+  Person.findByIdAndDelete(request.params.id)
+  .then(result => {
+    response.status(204).end()
+  })
 })
 
 /* 
@@ -78,7 +78,7 @@ app.post('/api/persons', postMorgan, (request, response) => {
   }  
 })
 
-const port = process.env.port
+const port = process.env.PORT | 3001
 app.listen(port, () =>
-  console.log(`Server running on http://localhost:${port}`)
+  console.log(`Server running on http://localhost:${port},`)
   );
