@@ -4,17 +4,18 @@ GET {{baseUrl}}
 
 ###
 
-POST {{baseUrl}} Content-Type: application/json
+POST {{baseUrl}} 
+Content-Type: application/json
 
 {
-"name": "Maksik",
-"number": "000000"
+  "name": "cos",
+  "number": "000000000"
 }
 
 ###
 
-GET {{baseUrl}}/65da3552b557c78600e05154
+GET {{baseUrl}}/65da4f4d8b29cc54801b9492
 
 ###
 
-DELETE {{baseUrl}}/65da34be1340c5c38c2b746e
+DELETE {{baseUrl}}/65da4f4d8b29cc54801b9492
